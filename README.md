@@ -41,6 +41,7 @@ The player controls his character and during the gameplay tries to pass the leve
 
 ### **2.3 Primary Mechanics**
 - **Platforms**: The player can jump up on these platforms to progress through a map
+- **Sprinting**: The player can hold the spacebar to sprint to increase its speed.
 - **Bonuses**: The player can pick up bonuses which either coins or bullets for extra score and with bullets to shoot the enemies. 
 - **Set enemy movement**: If the enemy is deemed far away from the player he will not be initially moving (for example at the start, player is at the very left and the enemy is at the right of the map), this is because they would never meet and enemy would fall off the map in most cases. So the enemy only starts moving once the player is close enough.
 - **The player can eliminate enemies**: the player shoots a bullet that, when hitting an enemy, eliminates it, or he can jump and land on the enemy, effectivelly "stomping" on them to eliminate them.
