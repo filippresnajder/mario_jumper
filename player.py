@@ -124,9 +124,12 @@ class Player(sprites.Sprites):
                     # Is Falling
                     if self.gravity > 0:
                         if type(block) is Enemy:
-                            block.alive = False
-                            block.death_timestamp = pygame.time.get_ticks()
-                            self.rect.bottom = block.rect.bottom
+                            if block.agressive:
+                                self.is_alive = False
+                            elif not block.agressive and block.alive:
+                                block.alive = False
+                                block.death_timestamp = pygame.time.get_ticks()
+                                self.rect.bottom = block.rect.bottom
                         if type(block) is not Enemy:
                             self.rect.bottom = block.rect.top
                         if type(block) is Pipe:
