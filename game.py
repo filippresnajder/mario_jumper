@@ -21,7 +21,7 @@ class Game:
         self.scroll_area_width = (self.screen.get_width() // 2)
         self.max_x = 0
         self.run = False
-        self.level = 1
+        self.level = 2
         self.day_theme = pygame.mixer.Sound(join('assets', 'sounds', 'day_theme.wav'))
         self.night_theme = pygame.mixer.Sound(join('assets', 'sounds', 'night_theme.wav'))
         self.game_over_sound = pygame.mixer.Sound(join('assets', 'sounds', 'game_over.wav'))

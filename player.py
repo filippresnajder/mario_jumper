@@ -26,7 +26,7 @@ class Player(sprites.Sprites):
         self.animation_count = 0
         self.sprite_index = 0
         self.score = 0
-        self.ammo = 0
+        self.ammo = 20
         self.shooting_cooldown = 0
         self.key_cooldown = 0
         self.is_on_pipe = False
@@ -124,7 +124,7 @@ class Player(sprites.Sprites):
                     # Is Falling
                     if self.gravity > 0:
                         if type(block) is Enemy:
-                            if block.agressive:
+                            if block.agressive and block.alive:
                                 self.is_alive = False
                             elif not block.agressive and block.alive:
                                 block.alive = False
