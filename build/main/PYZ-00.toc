@@ -1,5 +1,5 @@
 ('C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
- 'technologie\\PyGame\\Semestralny_Projekt\\build\\main\\PYZ-00.pyz',
+ 'technologie\\PyGame\\Mario_jumper\\build\\main\\PYZ-00.pyz',
  [('__future__',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py',
@@ -186,19 +186,19 @@
    'PYMODULE'),
   ('block',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\block.py',
+   'technologie\\PyGame\\Mario_jumper\\block.py',
    'PYMODULE'),
   ('bonus',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\bonus.py',
+   'technologie\\PyGame\\Mario_jumper\\bonus.py',
    'PYMODULE'),
   ('brick',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\brick.py',
+   'technologie\\PyGame\\Mario_jumper\\brick.py',
    'PYMODULE'),
   ('bullet',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\bullet.py',
+   'technologie\\PyGame\\Mario_jumper\\bullet.py',
    'PYMODULE'),
   ('bz2',
    'C:\\Program '
@@ -222,7 +222,7 @@
    'PYMODULE'),
   ('coin',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\coin.py',
+   'technologie\\PyGame\\Mario_jumper\\coin.py',
    'PYMODULE'),
   ('concurrent',
    'C:\\Program '
@@ -374,7 +374,7 @@
    'PYMODULE'),
   ('enemy',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\enemy.py',
+   'technologie\\PyGame\\Mario_jumper\\enemy.py',
    'PYMODULE'),
   ('fnmatch',
    'C:\\Program '
@@ -390,7 +390,7 @@
    'PYMODULE'),
   ('game',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\game.py',
+   'technologie\\PyGame\\Mario_jumper\\game.py',
    'PYMODULE'),
   ('getopt',
    'C:\\Program '
@@ -1041,7 +1041,7 @@
    'PYMODULE'),
   ('pipe',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\pipe.py',
+   'technologie\\PyGame\\Mario_jumper\\pipe.py',
    'PYMODULE'),
   ('pkgutil',
    'C:\\Program '
@@ -1053,7 +1053,7 @@
    'PYMODULE'),
   ('player',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\player.py',
+   'technologie\\PyGame\\Mario_jumper\\player.py',
    'PYMODULE'),
   ('pprint',
    'C:\\Program '
@@ -1166,7 +1166,7 @@
    'PYMODULE'),
   ('sprites',
    'C:\\Users\\Filip\\Desktop\\Všetko\\UKF Skola\\objektove '
-   'technologie\\PyGame\\Semestralny_Projekt\\sprites.py',
+   'technologie\\PyGame\\Mario_jumper\\sprites.py',
    'PYMODULE'),
   ('ssl',
    'C:\\Program '
