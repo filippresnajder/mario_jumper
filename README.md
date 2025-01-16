@@ -27,8 +27,7 @@ The goal of the game is for the player to pass all the levels without dying by e
 ### **1.3 Development Software**
 - **Pygame-CE**: chosen programming language.
 - **IntelliJ IDEA 2024.1**: chosen IDE.
-- **Itch.io**: [here](https://webfussel.itch.io/more-bit-8-bit-mario)
-- **Sounds**: [here](https://themushroomkingdom.net/media/smb/wav)
+- **Itch.io**: [here](https://itch.io/)
 
 ---
 ## **2. Concept**
@@ -59,7 +58,7 @@ The player controls his character and during the gameplay tries to pass the leve
 ## **3. Art**
 
 ### **3.1 Theme Interpretation**
-The game wants to be visually appealing, where using assets from itch.io, the player's and enemies assets were selected,as for the enemies and blocks, their visual appearence changes on the level the player is at, the art concpet is an 8-bit art concept in 2D.
+The game wants to be visually appealing, where using assets from [itch.io](https://webfussel.itch.io/more-bit-8-bit-mario), the player's and enemies assets were selected,as for the enemies and blocks, their visual appearence changes on the level the player is at, the art concpet is an 8-bit art concept in 2D.
 
 <p align="center">
   <img src="https://github.com/filippresnajder/mario_jumper/blob/main/assets/enemies/day/gnom.png" alt="Day gnom sprite">
@@ -102,7 +101,7 @@ The user interface is pretty simple just like in normal Super Mario except on th
 ### **5.2 Controls**
 <ins>**Keyboard**</ins>
 - **WAD**: Move the player around the map.
-- **SPACE**: Jump
+- **SPACE**: Sprint
 - **S**: Interracting with pipe to finish the game or get to another level
 - **Q**: Shoot.
 - **ESC**: Exit game.
