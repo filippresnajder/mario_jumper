@@ -14,13 +14,13 @@ from coin import Coin
 class Game:
     def __init__(self, screen):
         self.screen = screen
-        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (screen.get_width(), screen.get_height()))
         self.game_map = []
         self.player = Player(32, self.screen.get_height()-64)
         self.camera_offset = 0
         self.scroll_area_width = (self.screen.get_width() // 2)
         self.max_x = 0
         self.run = False
+        self.theme_playing = False
         self.level = 1
         self.day_theme = pygame.mixer.Sound(join('assets', 'sounds', 'day_theme.wav'))
         self.night_theme = pygame.mixer.Sound(join('assets', 'sounds', 'night_theme.wav'))
@@ -84,7 +84,16 @@ class Game:
         self.camera_offset = min(self.camera_offset, self.max_x - self.screen.get_width())
         self.camera_offset = max(self.camera_offset, 0)
 
-        self.screen.blit(self.bg, (0, 0))
+        if self.level == 1:
+            self.screen.blit(pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (self.screen.get_width(), self.screen.get_height())), (0, 0))
+            if not self.theme_playing:
+                self.day_theme.play(-1)
+                self.theme_playing = True
+        else:
+            self.screen.blit(pygame.transform.scale(pygame.image.load(join("assets", "background_night.png")).convert(), (self.screen.get_width(), self.screen.get_height())), (0, 0))
+            if not self.theme_playing:
+                self.night_theme.play(-1)
+                self.theme_playing = True
 
         # Update the player, enemies, render block, etc
         self.player.update(self.screen, self.game_map, self.camera_offset, self.max_x)
@@ -104,6 +113,7 @@ class Game:
                 self.game_over_sound.play()
             self.player.is_alive = False
             self.run = False
+            self.theme_playing = False
 
         if self.player.level_clear:
             self.advance_level()
@@ -115,9 +125,8 @@ class Game:
             self.player.win = True
             return
         if self.level == 2:
-            self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background_night.png")).convert(), (self.screen.get_width(), self.screen.get_height()))
             self.day_theme.stop()
-            self.night_theme.play(-1)
+            self.theme_playing = False
         self.player.level_clear = False
         self.player.rect.x = 32
         self.player.rect.y = self.screen.get_height() - 64
@@ -132,6 +141,7 @@ class Game:
         self.player.level_clear = False
         self.player.is_alive = True
         self.player.win = False
+        self.theme_playing = False
         self.player.rect.x = 32
         self.player.rect.y = self.screen.get_height() - 64
         self.player.score = 0
@@ -139,10 +149,8 @@ class Game:
         self.player.sprite_index = 0
         self.camera_offset = 0
         self.max_x = 0
-        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (self.screen.get_width(), self.screen.get_height()))
         self.game_over_sound.stop()
         self.game_clear_sound.stop()
-        self.day_theme.play(-1)
         self.generate_map()
 
 

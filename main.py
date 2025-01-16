@@ -10,6 +10,7 @@ pygame.display.set_caption("Mario Jumper")
 # Window and Frame variables
 WIDTH, HEIGHT = 1280, 720
 FPS = 60
+FULLSCREEN = False
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
@@ -22,6 +23,8 @@ menu_bg = pygame.transform.scale(pygame.image.load(join("assets", "background.pn
 
 # Render menu screen
 def menu():
+    global FULLSCREEN
+    global menu_bg
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -30,6 +33,15 @@ def menu():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     play()
+                if event.key == pygame.K_f:
+                    if not FULLSCREEN:
+                        FULLSCREEN = True
+                        pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+                        menu_bg = pygame.transform.scale(menu_bg, (screen.get_width(), screen.get_height()))
+                    else:
+                        FULLSCREEN = False
+                        pygame.display.set_mode((WIDTH, HEIGHT))
+                        menu_bg = pygame.transform.scale(menu_bg, (WIDTH, HEIGHT))
 
         screen.blit(menu_bg, (0, 0))
         generate_start_menu_text()
@@ -44,7 +56,6 @@ def play():
     game.player.is_alive = True
     game.run = True
     game.generate_map()
-    game.day_theme.play(-1)
 
     while True:
         for event in pygame.event.get():
@@ -94,9 +105,10 @@ def generate_start_menu_actions():
     shoot = font.render("Q - Shoot", False, (0, 0, 0))
     restart = font.render("R - Restart", False, (0, 0, 0))
     exit_game = font.render("ESC - Exit Game", False, (0, 0, 0))
+    full_screen = font.render("F (In menu) - Fullscreen Toggle", False, (0, 0, 0))
     screen.blit(start_game, (calculate_horizontal_text_center(start_game), calculate_vertical_text_center(start_game) - 125))
     screen.blit(controls, (calculate_horizontal_text_center(controls), calculate_vertical_text_center(controls) - 90))
-    all_controls = [controls, movement, sprint, pipe_enter, shoot, restart, exit_game]
+    all_controls = [controls, movement, sprint, pipe_enter, shoot, restart, exit_game, full_screen]
     for i in range(len(all_controls)):
         screen.blit(all_controls[i], (calculate_horizontal_text_center(all_controls[i]), calculate_vertical_text_center(all_controls[i]) - 90 + (i * 30)))
 def generate_player_data():
