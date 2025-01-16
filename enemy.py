@@ -9,7 +9,7 @@ ENEMY_GRAVITY = 2
 
 
 class Enemy(sprites.Sprites):
-    def __init__(self, x, y, daytime, enemy_type):
+    def __init__(self, x, y, daytime, enemy_type, aggression):
         super().__init__(pygame.image.load(join('assets', 'enemies', daytime, enemy_type + '.png')).convert_alpha())
         self.rect = pygame.Rect(x, y, 64, 64)
         self.sprites = self.get_sprites(64, 64, True)
@@ -23,9 +23,10 @@ class Enemy(sprites.Sprites):
         self.death_timestamp = 0
         self.death_sound = pygame.mixer.Sound(join('assets', 'sounds', 'enemy_death.wav'))
         self.death_sound_played = False
+        self.agressive = aggression
 
     def move(self, screen, game_map, player):
-        self.rect.x += ENEMY_SPEED if self.direction == "right" else -ENEMY_SPEED
+        self.rect.x += (ENEMY_SPEED if self.direction == "right" else -ENEMY_SPEED) * (1.5 if self.agressive else 1)
         self.gravity += ENEMY_GRAVITY
         self.rect.y += self.gravity
         self.check_vertical_collision(game_map, player)

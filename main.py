@@ -17,7 +17,7 @@ clock = pygame.time.Clock()
 # Initialize game
 game = Game(screen)
 
-menu_bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")), (screen.get_width(), screen.get_height()))
+menu_bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (screen.get_width(), screen.get_height()))
 
 
 # Render menu screen

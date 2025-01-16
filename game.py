@@ -14,7 +14,7 @@ from coin import Coin
 class Game:
     def __init__(self, screen):
         self.screen = screen
-        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")), (screen.get_width(), screen.get_height()))
+        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (screen.get_width(), screen.get_height()))
         self.game_map = []
         self.player = Player(32, self.screen.get_height()-64)
         self.camera_offset = 0
@@ -62,10 +62,10 @@ class Game:
                     coin = Coin(x, y)
                     self.game_map.append(coin)
                 elif char == "5":
-                    enemy = Enemy(x, y, daytime, "gnom")
+                    enemy = Enemy(x, y, daytime, "gnom", True if self.level == 2 else False)
                     self.game_map.append(enemy)
                 elif char == "6":
-                    enemy = Enemy(x, y, daytime, "turtle")
+                    enemy = Enemy(x, y, daytime, "turtle", True if self.level == 2 else False)
                     self.game_map.append(enemy)
                 elif char == "7":
                     pipe = Pipe(x, y)
@@ -115,7 +115,7 @@ class Game:
             self.player.win = True
             return
         if self.level == 2:
-            self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background_night.png")), (self.screen.get_width(), self.screen.get_height()))
+            self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background_night.png")).convert(), (self.screen.get_width(), self.screen.get_height()))
             self.day_theme.stop()
             self.night_theme.play(-1)
         self.player.level_clear = False
@@ -139,7 +139,7 @@ class Game:
         self.player.sprite_index = 0
         self.camera_offset = 0
         self.max_x = 0
-        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")), (self.screen.get_width(), self.screen.get_height()))
+        self.bg = pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (self.screen.get_width(), self.screen.get_height()))
         self.game_over_sound.stop()
         self.game_clear_sound.stop()
         self.day_theme.play(-1)
