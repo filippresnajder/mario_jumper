@@ -15,9 +15,9 @@ class Game:
     def __init__(self, screen):
         self.screen = screen
         self.game_map = []
-        self.player = Player(32, self.screen.get_height()-64)
+        self.player = Player(32, 600)
         self.camera_offset = 0
-        self.scroll_area_width = (self.screen.get_width() // 2)
+        self.scroll_area_width = self.screen.get_width() // 2
         self.max_x = 0
         self.run = False
         self.theme_playing = False
@@ -26,6 +26,8 @@ class Game:
         self.night_theme = pygame.mixer.Sound(join('assets', 'sounds', 'night_theme.wav'))
         self.game_over_sound = pygame.mixer.Sound(join('assets', 'sounds', 'game_over.wav'))
         self.game_clear_sound = pygame.mixer.Sound(join('assets', 'sounds', 'game_clear.wav'))
+        self.day_background = pygame.image.load(join("assets", "background.png")).convert()
+        self.night_background = pygame.image.load(join("assets", "background_night.png")).convert()
 
     def generate_map(self):
         daytime = "night" if self.level == 2 else "day"
@@ -85,25 +87,15 @@ class Game:
         self.camera_offset = max(self.camera_offset, 0)
 
         if self.level == 1:
-            self.screen.blit(pygame.transform.scale(pygame.image.load(join("assets", "background.png")).convert(), (self.screen.get_width(), self.screen.get_height())), (0, 0))
+            self.screen.blit(self.day_background, (0, 0))
             if not self.theme_playing:
                 self.day_theme.play(-1)
                 self.theme_playing = True
         else:
-            self.screen.blit(pygame.transform.scale(pygame.image.load(join("assets", "background_night.png")).convert(), (self.screen.get_width(), self.screen.get_height())), (0, 0))
+            self.screen.blit(self.night_background, (0, 0))
             if not self.theme_playing:
                 self.night_theme.play(-1)
                 self.theme_playing = True
-
-        # Update the player, enemies, render block, etc
-        self.player.update(self.screen, self.game_map, self.camera_offset, self.max_x)
-        for block in self.game_map:
-            if type(block) is Bullet:
-                block.update(self.screen, self.camera_offset, self.game_map)
-            elif type(block) is Enemy:
-                block.update(self.screen, self.camera_offset, self.game_map, self.player)
-            else:
-                block.render(self.screen, self.camera_offset)
 
         # Stop the game if the player won, or died or is off the map because of falling
         if self.player.rect.y > self.screen.get_height() + 100 or self.player.sprite_index == 4:
@@ -117,6 +109,18 @@ class Game:
 
         if self.player.level_clear:
             self.advance_level()
+
+        # Update the player, enemies, render block, etc
+        self.player.update(self.screen, self.game_map, self.camera_offset, self.max_x)
+        for block in self.game_map:
+            if abs(block.rect.x - self.player.rect.x) < self.scroll_area_width * 2:
+                if type(block) is Bullet:
+                    block.update(self.screen, self.camera_offset, self.game_map)
+                elif type(block) is Enemy:
+                    if abs(block.rect.x - self.player.rect.x) < 1280:
+                        block.update(self.screen, self.camera_offset, self.game_map, self.player)
+                else:
+                    block.render(self.screen, self.camera_offset)
 
     def advance_level(self):
         self.level += 1

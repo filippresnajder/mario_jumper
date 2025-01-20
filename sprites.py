@@ -1,8 +1,9 @@
 import pygame
 
 
-class Sprites:
+class Sprites(pygame.sprite.Sprite):
     def __init__(self, sheet):
+        super().__init__()
         self.sheet = sheet
 
     def get_sprites(self, width, height, direction):

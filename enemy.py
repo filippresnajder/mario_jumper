@@ -84,14 +84,7 @@ class Enemy(sprites.Sprites):
 
             return
 
-        # Start the movement ONLY if the enemy is close to the player, this is because for example
-        # If the player is the start of the map and the enemy at very end, he would be moving/potentially falling
-        # way before the player would reach him, rendering him useless.
-        if not self.movement_started and abs(self.rect.x - player.rect.x) <= screen.get_width():
-            self.movement_started = True
-
-        if self.movement_started:
-            self.move(screen, game_map, player)
-            self.animate_sprite()
-            screen.blit(self.sprites[self.direction][self.current_sprite], (self.rect.x - camera_offset, self.rect.y))
+        self.move(screen, game_map, player)
+        self.animate_sprite()
+        screen.blit(self.sprites[self.direction][self.current_sprite], (self.rect.x - camera_offset, self.rect.y))
 

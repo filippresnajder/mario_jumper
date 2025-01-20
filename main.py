@@ -38,10 +38,12 @@ def menu():
                         FULLSCREEN = True
                         pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
                         menu_bg = pygame.transform.scale(menu_bg, (screen.get_width(), screen.get_height()))
+                        adjust_game_for_resolution_change()
                     else:
                         FULLSCREEN = False
                         pygame.display.set_mode((WIDTH, HEIGHT))
                         menu_bg = pygame.transform.scale(menu_bg, (WIDTH, HEIGHT))
+                        adjust_game_for_resolution_change()
 
         screen.blit(menu_bg, (0, 0))
         generate_start_menu_text()
@@ -52,7 +54,7 @@ def menu():
 
 # Render the game
 def play():
-    # Activate the player, game and themes
+    # Activate the player, game and generate the map
     game.player.is_alive = True
     game.run = True
     game.generate_map()
@@ -142,6 +144,11 @@ def calculate_horizontal_text_center(text):
     return screen.get_width() // 2 - text.get_width() // 2
 def calculate_vertical_text_center(text):
     return screen.get_height() // 2 - text.get_height() // 2
+def adjust_game_for_resolution_change():
+    game.day_background = pygame.transform.scale(game.day_background, (screen.get_width(), screen.get_height()))
+    game.night_background = pygame.transform.scale(game.night_background, (screen.get_width(), screen.get_height()))
+    game.screen = screen
+    game.scroll_area_width = screen.get_width() // 2
 
 
 if __name__ == "__main__":
